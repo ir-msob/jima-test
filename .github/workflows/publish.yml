@@ -51,7 +51,7 @@ jobs:
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
       run: |
           mkdir -p ~/.m2
-          echo "<settings><servers><server><id>central</id><username>$MAVEN_USERNAME</username><password>$MAVEN_PASSWORD</password></server></servers><profiles><profile><id>ossrh</id><activation><activeByDefault>true</activeByDefault></activation><properties><gpg.executable>gpg2</gpg.executable></properties></profile></profiles></settings>" > ~/.m2/settings.xml
+          echo "<settings><servers><server><id>central</id><username>$MAVEN_USERNAME</username><password>$MAVEN_PASSWORD</password></server></servers><profiles><profile><id>release</id><activation><activeByDefault>true</activeByDefault></activation><properties><gpg.executable>gpg2</gpg.executable></properties></profile></profiles></settings>" > ~/.m2/settings.xml
 
     - id: Deploy_to_Central_Repository
       name: Deploy to Central Repository
