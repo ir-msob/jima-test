@@ -45,6 +45,11 @@ jobs:
           # Verify gpg secret key
           gpg --list-secret-keys --keyid-format LONG
 
+    - name: Setup Maven settings.xml
+      run: |
+          mkdir -p ~/.m2
+          echo "<settings><servers><server><id>central</id><username>${env.MAVEN_USERNAME}</username><password>${env.MAVEN_PASSWORD}</password></server></servers><profiles><profile><id>ossrh</id><activation><activeByDefault>true</activeByDefault></activation><properties><gpg.executable>gpg2</gpg.executable></properties></profile></profiles></settings>" > ~/.m2/settings.xml
+          
     - name: Publish to Central Repository
       env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
