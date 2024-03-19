@@ -40,6 +40,5 @@ jobs:
 
     - id: Maven_Test
       name: Maven Test
-      run: |
-          mvn clean test -P test
+      run: mvn clean test -P test
             
