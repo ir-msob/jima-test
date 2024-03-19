@@ -7,5 +7,6 @@ class SampleClass {
     @Test
     void test() {
         assertNotNull(null);
+        assertNotNull("aaaa");
     }
 }
