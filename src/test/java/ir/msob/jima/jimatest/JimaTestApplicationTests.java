@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class JimaTestApplicationTests {
 
 
+
+
 	@Test
 	void contextLoads() {
 //		Assertions.assertEquals("1","2");
