@@ -29,6 +29,7 @@ jobs:
         cache-dependency-path: web/angular/
         node-version: 20
         cache: 'npm'
+        registry-url: https://registry.npmjs.org/
 
     - name: Cache NPM packages
       uses: actions/cache@v3
