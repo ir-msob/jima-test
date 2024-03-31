@@ -13,7 +13,11 @@
     <artifactId>jima-test</artifactId>
     <version>0.0.1</version>
     <name>jima-test</name>
+    <packaging>pom</packaging>
     <description>Test project</description>
+    <modules>
+        <module>web</module>
+    </modules>
     <properties>
         <java.version>21</java.version>
 
