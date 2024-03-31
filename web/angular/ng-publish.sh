@@ -6,5 +6,6 @@ for project in $(ls projects/); do
   ng test --project=$project --watch=false --browsers=ChromeHeadless
   npm publish --access public
   cd ../..
+
 done
 
