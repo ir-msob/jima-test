@@ -9,7 +9,7 @@ for project in $(ls projects/); do
   ng build --project=$project
   cd dist/$project
   #npm publish $PUBLISH_REGISTRY
-  npm publish
+  npm publish --access public
   cd ../..
 done
 
