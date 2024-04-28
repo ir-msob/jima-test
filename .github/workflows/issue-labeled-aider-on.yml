@@ -8,7 +8,7 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
-    uses: ./aider-issue-to-pr.yml
+    uses: ./aider-issue-to-pr.yml@main
     # Check if the label is 'aider'
     if: github.event.label.name == 'aider'
     with:
