@@ -1,11 +1,11 @@
-name: Auto-generate PR using Aider
+name: Auto-generate PR from Issues using Aider
 on:
   issues:
     types: [labeled]
 
 jobs:
   generate:
-    uses: mirrajabi/aider-github-workflows/blob/main/.github/workflows/aider-issue-to-pr.yml@main
+    uses: mirrajabi/aider-github-workflows/.github/workflows/aider-issue-to-pr.yml@main
     # Check if the label is 'aider'
     if: github.event.label.name == 'aider'
     with:
