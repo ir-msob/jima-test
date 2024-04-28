@@ -9,7 +9,8 @@ jobs:
       issues: write
       pull-requests: write
       contents: write
-    uses: ./.github/workflows/aider-issue-to-pr.yml
+    # uses: ./.github/workflows/aider-issue-to-pr.yml
+    uses: mirrajabi/aider-github-action/.github/workflows/aider-issue-to-pr.yml@main
     # Check if the label is 'aider'
     if: github.event.label.name == 'aider'
     with:
