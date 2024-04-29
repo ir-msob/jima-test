@@ -40,7 +40,7 @@ jobs:
         echo "::set-output name=pr-body::$pr_body"
         
     - name: Create PR
-      uses: peter-evans/create-pull-request@v6peter-evans/create-pull-request@v3peter-evans/create-pull-request@v3
+      uses: peter-evans/create-pull-request@v6
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: 'Create PR from issue ${{ github.event.issue.number }}'
