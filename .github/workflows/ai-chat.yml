@@ -1,0 +1,54 @@
+name: Create PR from Issue using OpenAI
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Generate PR title and body using OpenAI
+      id: openai
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      run: |
+        # Install the OpenAI Python library
+        pip install openai
+        
+        import openai
+        openai.api_key = os.environ["OPENAI_API_KEY"]
+        
+        # Prompt the OpenAI API to generate the PR title and body
+        response = openai.Completion.create(
+            engine="text-davinci-002",
+            prompt=f"Create a pull request title and body for issue #{github.event.issue.number}. The pull request should address the issue.",
+            max_tokens=512,
+            n=1,
+            stop=None,
+            temperature=0.7,
+        )
+        
+        pr_title = response.choices[0].text.strip()
+        pr_body = f"This pull request addresses issue #{github.event.issue.number}:\n\n{github.event.issue.body}"
+        
+        echo "::set-output name=pr-title::$pr_title"
+        echo "::set-output name=pr-body::$pr_body"
+        
+    - name: Create PR
+      uses: peter-evans/create-pull-request@v6peter-evans/create-pull-request@v3peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: 'Create PR from issue ${{ github.event.issue.number }}'
+        title: ${{ steps.openai.outputs.pr-title }}
+        body: ${{ steps.openai.outputs.pr-body }}
+        head: issue-${{ github.event.issue.number }}
+        base: ${{ github.event.repository.default_branch }}
+        
+    - name: Check outputs
+      run: |
+        echo "Created PR: ${{ steps.create-pr.outputs.pull-request-url }}"
