@@ -1,3 +1,5 @@
+name: Auto-generate PR from Issues using Aider 22
+
 on:
   issues:
     types: [labeled]
