@@ -8,7 +8,7 @@
         <version>3.2.3</version>
         <relativePath/> <!-- lookup parent from repository -->
              
-    </parent>
+    
     <groupId>ir.msob.jima</groupId>
     <artifactId>jima-test</artifactId>
     <version>0.0.1</version>
